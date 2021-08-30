@@ -1,7 +1,7 @@
 import java.lang.NumberFormatException
 
 fun main() {
-    var list = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
+    val list = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
 
     print("Your list: ")
     print(list)
