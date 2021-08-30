@@ -6,17 +6,17 @@ import java.lang.NumberFormatException
  */
 
 fun main() {
-    val arr = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
+    val list = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
 
     print("Your list: ")
-    print(arr)
+    print(list)
     println()
 
     try {
         print("Enter an index you want to reverse from (Press Enter to skip): ")
         when (val enteredIndex: String? = readLine()) {
-            "" -> arr.reverseByIndex()                                  // meaning if the Enter key is pressed
-            is String -> arr.reverseByIndex(enteredIndex.toInt())       // the entered index will be converted to int
+            "" -> list.reverseByIndex()                                  // meaning if the Enter key is pressed
+            is String -> list.reverseByIndex(enteredIndex.toInt())       // the entered index will be converted to int
         }
     } catch (e: NumberFormatException) {
         print("Wrong type of input has been entered.")
