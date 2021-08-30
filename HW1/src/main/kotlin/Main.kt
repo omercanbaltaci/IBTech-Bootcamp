@@ -6,7 +6,7 @@ import java.lang.NumberFormatException
  */
 
 fun main() {
-    val list = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
+    var list = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
 
     print("Your list: ")
     print(list)
@@ -34,18 +34,18 @@ fun MutableList<Any>.reverseByIndex(index: Int = 0) {
         return
     }
 
-    var noOfReverses: Int = (this.size - index) / 2
+    var noOfSwaps: Int = (this.size - index) / 2
     // first indicates the index of the first element to swap, same with second
     var first: Int = index
     var second: Int = this.size - 1
-    while (noOfReverses > 0) {
+    while (noOfSwaps > 0) {
         // swapping operation
         val temp: Any = this.elementAt(first)
         this[first] = this.elementAt(second)
         this[second] = temp
         first++
         second--
-        noOfReverses--
+        noOfSwaps--
     }
 
     print("Reversed list: ")
