@@ -1,3 +1,5 @@
+import java.lang.NumberFormatException
+
 /**
  * Author: Ömer Can Baltacı
  * Date: 30/08/2021
@@ -10,10 +12,14 @@ fun main() {
     print(arr)
     println()
 
-    print("Enter an index you want to reverse from (Press enter to skip): ")
-    when(val enteredIndex: String? = readLine()) {
-        "" -> arr.reverseByIndex()
-        is String -> arr.reverseByIndex(enteredIndex.toInt())
+    try {
+        print("Enter an index you want to reverse from (Press Enter to skip): ")
+        when (val enteredIndex: String? = readLine()) {
+            "" -> arr.reverseByIndex()                                  // meaning if the Enter key is pressed
+            is String -> arr.reverseByIndex(enteredIndex.toInt())       // the entered index will be converted to int
+        }
+    } catch (e: NumberFormatException) {
+        print("Wrong type of input has been entered.")
     }
 }
 
@@ -29,9 +35,11 @@ fun MutableList<Any>.reverseByIndex(index: Int = 0) {
     }
 
     var noOfReverses: Int = (this.size - index) / 2
+    // first indicates the index of the first element to swap, same with second
     var first: Int = index
     var second: Int = this.size - 1
     while (noOfReverses > 0) {
+        // swapping operation
         val temp: Any = this.elementAt(first)
         this[first] = this.elementAt(second)
         this[second] = temp
