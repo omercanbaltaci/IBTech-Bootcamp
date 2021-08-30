@@ -1,3 +1,8 @@
+/**
+ * Author: Ömer Can Baltacı
+ * Date: 30/08/2021
+ */
+
 fun main() {
     val arr = mutableListOf<Any>("Hello", 8.4, 9, 2, "World", 3.5f, 5)
 
