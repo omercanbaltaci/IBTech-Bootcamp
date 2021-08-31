@@ -7,15 +7,21 @@ fun main() {
     print(list)
     println()
 
-    try {
-        print("Enter an index you want to reverse from (Press Enter to skip): ")
-        when (val enteredIndex: String? = readLine()) {
-            "" -> list.reverseByIndex()                                  // meaning if the Enter key is pressed
-            is String -> list.reverseByIndex(enteredIndex.toInt())       // the entered index will be converted to int
+    var flag = true
+    do {
+        try {
+            print("Enter an index you want to reverse from (Enter to skip, type -1 to exit.): ")
+            val enteredIndex: String? = readLine()
+            if (enteredIndex == "") list.reverseByIndex()
+            else if (enteredIndex != null){
+                if (enteredIndex.toInt() == -1) flag = false
+                else if (enteredIndex.toInt() !in 0..list.size) println("Wrong input. Try again. (0-${list.size})")
+                else list.reverseByIndex(enteredIndex.toInt())
+            }
+        } catch (e: NumberFormatException) {
+            println("Wrong type of input has been entered. Try again.")
         }
-    } catch (e: NumberFormatException) {
-        print("Wrong type of input has been entered.")
-    }
+    } while (flag)
 }
 
 /**
@@ -23,12 +29,6 @@ fun main() {
  * starting with that given index by simply swapping elements.
  */
 fun MutableList<Any>.reverseByIndex(index: Int = 0) {
-    // index check
-    if (index < 0 || index >= this.size) {
-        print("Wrong input.")
-        return
-    }
-
     var noOfSwaps: Int = (this.size - index) / 2
     // first indicates the index of the first element to swap, same with second
     var first: Int = index
@@ -44,5 +44,5 @@ fun MutableList<Any>.reverseByIndex(index: Int = 0) {
     }
 
     print("Reversed list: ")
-    print(this)
+    println(this)
 }
