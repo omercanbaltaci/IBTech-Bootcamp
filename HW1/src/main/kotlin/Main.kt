@@ -12,10 +12,11 @@ fun main() {
         try {
             print("Enter an index you want to reverse from (Enter to skip, type -1 to exit.): ")
             val enteredIndex: String? = readLine()
-            if (enteredIndex == "") list.reverseByIndex()
-            else if (enteredIndex != null){
-                if (enteredIndex.toInt() == -1) flag = false
-                else if (enteredIndex.toInt() !in 0..list.size) println("Wrong input. Try again. (0-${list.size})")
+            if (enteredIndex != null){
+                if (enteredIndex == "") list.reverseByIndex()               // if index = Enter
+                else if (enteredIndex.toInt() == -1) flag = false           // exit
+                else if (enteredIndex.toInt() !in 0..list.size)             // if index is out of bounds
+                    println("Index is out of bounds. Try again. (0-${list.size})")
                 else list.reverseByIndex(enteredIndex.toInt())
             }
         } catch (e: NumberFormatException) {
