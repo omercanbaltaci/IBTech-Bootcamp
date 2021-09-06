@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="begin_button_margin">17dp</dimen>
+    <dimen name="skip_button_margin">40dp</dimen>
+    <dimen name="word_quiz_margin">55dp</dimen>
+    <dimen name="button_corner_radius">200dp</dimen>
+    <!-- text size -->
+    <dimen name="default_text_size">18sp</dimen>
+    <dimen name="large_text_size">32sp</dimen>
+</resources>
