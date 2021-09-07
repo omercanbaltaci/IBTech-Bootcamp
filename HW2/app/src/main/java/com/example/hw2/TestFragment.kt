@@ -12,8 +12,12 @@ class TestFragment : Fragment(R.layout.fragment_test) {
 
         val beginNow = getView()?.findViewById<CardView>(R.id.begin_now_btn)
         beginNow?.setOnClickListener {
-            val intent = Intent(activity, QuestionActivity::class.java)
-            activity?.startActivity(intent)
+            // If the button has been pressed,
+            val intent = Intent(activity, QuestionActivity::class.java).apply {
+                putExtra(com.example.hw2.util.KEY1, com.example.hw2.util.WORD)      // Put the word in extra
+                putExtra(com.example.hw2.util.KEY2, com.example.hw2.util.ANSWERS)   // Put the answers in extra
+            }
+            activity?.startActivity(intent)                                         // Start the activity using the ext. func.
         }
     }
 }

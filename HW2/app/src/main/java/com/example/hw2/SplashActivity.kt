@@ -12,6 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Starting of the TestActivity is delayed by delay (whatever the amount is)
         Timer().schedule(object : TimerTask() {
             override fun run() {
                 startActivity<TestActivity>()

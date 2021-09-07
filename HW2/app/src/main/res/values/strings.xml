@@ -4,4 +4,5 @@
     <string name="test_context">Kelime Testi, Sizin dil seviyenizi ölçmek içindir. Test sonunda doğru ve yanlışlarınızı görebileceksiniz!</string>
     <string name="skip">Atla</string>
     <string name="begin_now">Şimdi Başla</string>
+    <string name="progress">3/10</string>
 </resources>

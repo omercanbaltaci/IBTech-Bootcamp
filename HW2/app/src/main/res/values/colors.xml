@@ -10,4 +10,7 @@
     <color name="splash_background">#FFFBFB</color>
     <color name="purple_button">#A259FF</color>
     <color name="default_text_color">#484848</color>
+    <color name="progress_background">#FFD0D6</color>
+    <color name="progress_foreground">#FF6C81</color>
+    <color name="stroke_color">#00A597</color>
 </resources>

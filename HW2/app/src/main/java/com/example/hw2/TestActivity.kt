@@ -10,6 +10,7 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
+        // An extension function to push a fragment have been used here
         supportFragmentManager.inTransaction {
             add(R.id.flFragment, TestFragment())
         }

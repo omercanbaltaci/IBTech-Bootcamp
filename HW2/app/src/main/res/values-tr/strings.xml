@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">HW2</string>
-    <string name="test_title">Kelime Testi</string>
-    <string name="test_context">Kelime Testi, Sizin dil seviyenizi ölçmek içindir. Test sonunda doğru ve yanlışlarınızı görebileceksiniz!</string>
-    <string name="skip">Atla</string>
-    <string name="begin_now">Şimdi Başla</string>
-</resources>
