@@ -42,4 +42,16 @@
         <item name="android:textSize">@dimen/default_card_text_size</item>
         <item name="fontFamily">@font/sfprodisplay_bold</item>
     </style>
+
+    <style name="BoldCountdownText" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">@dimen/bold_countdown_text</item>
+        <item name="fontFamily">@font/sfprodisplay_bold</item>
+    </style>
+
+    <style name="DefaultCountdownText" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">@dimen/default_countdown_text</item>
+        <item name="fontFamily">@font/sfprodisplay_regular</item>
+    </style>
 </resources>

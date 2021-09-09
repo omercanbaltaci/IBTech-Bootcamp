@@ -12,8 +12,10 @@
     <dimen name="large_text_size">32sp</dimen>
     <dimen name="large_card_text_size">28sp</dimen>
     <dimen name="default_card_text_size">16sp</dimen>
+    <dimen name="bold_countdown_text">22sp</dimen>
+    <dimen name="default_countdown_text">12sp</dimen>
     <!--test screen cards-->
-    <dimen name="test_screen_card_width">144dp</dimen>
+    <dimen name="test_screen_card_width">134dp</dimen>
     <dimen name="test_screen_card_height">154dp</dimen>
     <dimen name="test_screen_card_radius">30dp</dimen>
     <dimen name="test_screen_card_verticalGL">53dp</dimen>

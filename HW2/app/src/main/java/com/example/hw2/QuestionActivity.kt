@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hw2.util.COUNTDOWN_LIMIT
+import com.example.hw2.util.INCREMENT_PROGRESS
 import com.example.hw2.util.placeExtraAnswers
 import com.example.hw2.util.placeExtraWord
 import kotlin.concurrent.fixedRateTimer
 
 class QuestionActivity : AppCompatActivity() {
-    private var progressInSeconds: Int = 0
+    private var progressInSeconds: Int = 100
     private val delay: Long = 1000
+    private var count: Int = 19
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +30,12 @@ class QuestionActivity : AppCompatActivity() {
         updateCountdownTimer()
         fixedRateTimer("timer", false, 0, delay) {
             this@QuestionActivity.runOnUiThread {
-                progressInSeconds += 5              // Increment by 5, 20 seconds, equals to 100
+                progressInSeconds -= INCREMENT_PROGRESS         // Decrement by 5, 20 seconds, equals to 100
                 updateCountdownTimer()
+
+                // Updating countdown condition
+                if (count >= COUNTDOWN_LIMIT) updateCountdownTime(count)
+                count--
             }
         }
     }
@@ -37,5 +44,11 @@ class QuestionActivity : AppCompatActivity() {
     private fun updateCountdownTimer() {
         val cdTimer = findViewById<ProgressBar>(R.id.countdown_timer)
         cdTimer.progress = progressInSeconds
+    }
+
+    // Refreshing the countdown
+    private fun updateCountdownTime(count: Int) {
+        val cdTime = findViewById<TextView>(R.id.cdTime)
+        cdTime.text = count.toString()
     }
 }

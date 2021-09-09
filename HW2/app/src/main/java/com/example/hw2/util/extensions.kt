@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 // Extension function to start an activity
-inline fun<reified T : AppCompatActivity> Context.startActivity(block : Intent.() -> Unit = {}){
+inline fun<reified T: AppCompatActivity> Context.startActivity(block: Intent.() -> Unit = {}){
     val intent  = Intent(this , T::class.java)
     startActivity(
         intent.also {
