@@ -13,4 +13,5 @@
     <color name="progress_background">#FFD0D6</color>
     <color name="progress_foreground">#FF6C81</color>
     <color name="stroke_color">#00A597</color>
+    <color name="question_color">#FFE3E3</color>
 </resources>

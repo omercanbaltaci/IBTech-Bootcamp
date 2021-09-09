@@ -18,6 +18,7 @@ class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
+        this.window.statusBarColor = resources.getColor(R.color.question_color)
 
         // Below two extensions functions have been used in order to populate textviews
         findViewById<TextView>(R.id.word_in_question).placeExtraWord(intent)
