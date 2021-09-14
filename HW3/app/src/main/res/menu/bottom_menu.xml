@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/battleFragment"
+        android:icon="@drawable/battle_icon_selector"
+        android:title="@string/battle"/>
+
+    <item
+        android:id="@+id/myDecksFragment"
+        android:icon="@drawable/decks_icon_selector"
+        android:title="@string/decklerim"/>
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/profile_icon_selector"
+        android:title="@string/profile"/>
+</menu>

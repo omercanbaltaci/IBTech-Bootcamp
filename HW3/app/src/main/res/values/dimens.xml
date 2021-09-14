@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- text sizes -->
+    <dimen name="battle_profile_info_bold">18sp</dimen>
+    <dimen name="battle_profile_info_regular">14sp</dimen>
+    <dimen name="battle_multi_text">28sp</dimen>
+    <dimen name="empty_state_title">32sp</dimen>
+    <dimen name="menu_text">32sp</dimen>
+    <dimen name="bottom_navigation">12sp</dimen>
+    <dimen name="follow_us">16sp</dimen>
+
+    <!-- battle profile info -->
+    <dimen name="battle_profile_info_height">60dp</dimen>
+    <dimen name="battle_profile_info_width">374dp</dimen>
+    <dimen name="battle_profile_info_radius">100dp</dimen>
+    <dimen name="battle_profile_info_margin">45dp</dimen>
+    <dimen name="battle_profile_info_crown_left_margin">25dp</dimen>
+    <dimen name="battle_profile_info_points_margin">12dp</dimen>
+    <dimen name="battle_profile_info_level_margin">16dp</dimen>
+    <dimen name="battle_profile_info_points_left_margin">62dp</dimen>
+    <dimen name="battle_profile_info_level_left_margin">10dp</dimen>
+    <dimen name="battle_profile_info_star_left_margin">223dp</dimen>
+    <dimen name="battle_multi_art_top_margin">143dp</dimen>
+    <dimen name="battle_multi_art_start_margin">12dp</dimen>
+    <dimen name="battle_multi_text_margin_end">20dp</dimen>
+    <dimen name="battle_multi_text_margin_top">300dp</dimen>
+    <dimen name="card_radius">200dp</dimen>
+    <dimen name="multi_playnow_marginTop">358dp</dimen>
+    <dimen name="multi_playnow_marginEnd">20dp</dimen>
+    <dimen name="empty_decks_sub_margin">58dp</dimen>
+</resources>
