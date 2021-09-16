@@ -17,4 +17,6 @@
     <color name="battle_single">#484848</color>
     <color name="profile_crown">#FDD015</color>
     <color name="green_text">#00A597</color>
+    <color name="avatar_background">#FFF7EF</color>
+    <color name="my_decks_status_bar">#FFE3E3</color>
 </resources>

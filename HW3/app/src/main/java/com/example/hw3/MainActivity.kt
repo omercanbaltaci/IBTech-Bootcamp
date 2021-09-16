@@ -28,6 +28,6 @@ class MainActivity : AppCompatActivity() {
     fun showNavigation() {
         bottomNavigationView.postDelayed({
             bottomNavigationView.visible()
-        }, 0)
+        }, 500)
     }
 }

@@ -14,8 +14,16 @@ class BattleFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        showPopUp()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_battle, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        activity?.window?.statusBarColor = resources.getColor(R.color.battle_background)
     }
 
     override fun getLayoutID(): Int = R.layout.fragment_battle

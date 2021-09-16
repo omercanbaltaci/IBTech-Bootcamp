@@ -14,8 +14,16 @@ class MyDecksFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        showPopUp()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_decks, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        activity?.window?.statusBarColor = resources.getColor(R.color.my_decks_status_bar)
     }
 
     override fun getLayoutID(): Int = R.layout.fragment_my_decks

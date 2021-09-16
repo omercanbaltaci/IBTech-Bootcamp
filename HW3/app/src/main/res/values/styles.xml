@@ -95,4 +95,10 @@
         <item name="android:textSize">@dimen/follow_us</item>
         <item name="fontFamily">@font/sfprodisplay_regular</item>
     </style>
+
+    <style name="ChooseAvatar" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/choose_avatar</item>
+        <item name="fontFamily">@font/sfprodisplay_bold</item>
+    </style>
 </resources>

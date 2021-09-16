@@ -34,8 +34,7 @@
             app:indicatorColor="@color/progress_foreground"
             app:trackColor="@color/progress_background"
             app:trackCornerRadius="200dp"
-            app:trackThickness="10dp" />
-
+            app:trackThickness="5dp" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageView

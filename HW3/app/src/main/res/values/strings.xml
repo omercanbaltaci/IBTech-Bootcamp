@@ -11,8 +11,7 @@
     <string name="profile">Profile</string>
     <string name="decklerim">Decklerim</string>
     <string name="battle">Battle</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="what_is_decky">decky nedir?</string>
     <string name="user_name">John Doe</string>
+    <string name="choose_avatar">Kullanıcı adınızı oluşturun ve size uygun bir avatar seçin</string>
 </resources>

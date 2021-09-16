@@ -8,6 +8,7 @@
     <dimen name="menu_text">32sp</dimen>
     <dimen name="bottom_navigation">12sp</dimen>
     <dimen name="follow_us">16sp</dimen>
+    <dimen name="choose_avatar">24sp</dimen>
 
     <!-- battle profile info -->
     <dimen name="battle_profile_info_height">60dp</dimen>
