@@ -23,7 +23,7 @@ class BattleFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activity?.window?.statusBarColor = resources.getColor(R.color.battle_background)
+        changeStatusBarColor(R.color.battle_background)
     }
 
     override fun getLayoutID(): Int = R.layout.fragment_battle

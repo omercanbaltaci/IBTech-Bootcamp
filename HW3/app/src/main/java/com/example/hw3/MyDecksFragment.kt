@@ -23,7 +23,7 @@ class MyDecksFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activity?.window?.statusBarColor = resources.getColor(R.color.my_decks_status_bar)
+        changeStatusBarColor(R.color.my_decks_status_bar)
     }
 
     override fun getLayoutID(): Int = R.layout.fragment_my_decks

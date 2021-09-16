@@ -8,6 +8,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.hw3.MainActivity
+import com.example.hw3.R
 
 abstract class BaseFragment : Fragment(), FragmentInterface {
     override fun onCreateView(
@@ -45,5 +46,10 @@ abstract class BaseFragment : Fragment(), FragmentInterface {
                     .show()
             }
         })
+    }
+
+    // Function to change the statusbar color
+    fun changeStatusBarColor(id: Int) {
+        activity?.window?.statusBarColor = resources.getColor(id)
     }
 }

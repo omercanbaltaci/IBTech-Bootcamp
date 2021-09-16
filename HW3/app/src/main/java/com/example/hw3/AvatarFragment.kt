@@ -65,7 +65,7 @@ class AvatarFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activity?.window?.statusBarColor = resources.getColor(R.color.avatar_background)
+        changeStatusBarColor(R.color.avatar_background)
     }
 
     override fun getLayoutID(): Int = R.layout.fragment_avatar

@@ -40,7 +40,7 @@ class SplashFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activity?.window?.statusBarColor = resources.getColor(R.color.splash_background)
+        changeStatusBarColor(R.color.splash_background)
     }
 
     override fun getLayoutID(): Int = R.layout.fragment_splash
