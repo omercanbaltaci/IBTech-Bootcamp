@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hw3.avatarselection.model.Data
 import com.example.hw3.R
+import com.example.hw3.avatarselection.model.Data
 
 class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // These global variables help selecting and deselecting avatars
@@ -21,7 +21,7 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
         const val VIEW_TYPE_TWO = 2
     }
 
-    // First view, takes whole first row of the GridLayout
+    // First view, takes the whole first row of the GridLayout
     private inner class View1ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var message: TextView = itemView.findViewById(R.id.avatar_text)     // Get the textview here
         fun bind (position: Int) {
@@ -30,6 +30,7 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
         }
     }
 
+    // Second view, represents the avatars
     private inner class View2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var avatar: ImageView = itemView.findViewById(R.id.avatar_image)    // Get imageview here
         fun bind (position: Int) {

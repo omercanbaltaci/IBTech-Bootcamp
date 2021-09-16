@@ -8,7 +8,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.hw3.MainActivity
-import com.example.hw3.R
 
 abstract class BaseFragment : Fragment(), FragmentInterface {
     override fun onCreateView(
