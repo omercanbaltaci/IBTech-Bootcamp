@@ -31,8 +31,7 @@ abstract class BaseFragment : Fragment(), FragmentInterface {
 
     abstract fun getLayoutID() : Int
 
-    // Popping up a dialog for the user to ask if they want to exit the app or continue using it
-    fun showPopUp() {
+    override fun showPopUp() {
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 AlertDialog.Builder(requireContext())
@@ -47,8 +46,7 @@ abstract class BaseFragment : Fragment(), FragmentInterface {
         })
     }
 
-    // Function to change the statusbar color
-    fun changeStatusBarColor(id: Int) {
+    override fun changeStatusBarColor(id: Int) {
         activity?.window?.statusBarColor = resources.getColor(id)
     }
 }
