@@ -1,4 +1,4 @@
-package com.example.hw3
+package com.example.hw3.avatarselection.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw3.avatarselection.model.Data
+import com.example.hw3.R
 
 class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var selectedItemPos = -1

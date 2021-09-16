@@ -36,5 +36,11 @@ class ProfileFragment : BaseFragment() {
         activity?.window?.statusBarColor = resources.getColor(R.color.battle_background)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        activity?.window?.statusBarColor = resources.getColor(R.color.battle_background)
+    }
+
     override fun getLayoutID(): Int = R.layout.fragment_profile
 }

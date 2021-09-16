@@ -1,4 +1,4 @@
-package com.example.hw3
+package com.example.hw3.avatarselection.model
 
 import java.io.Serializable
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
+import com.example.hw3.avatarselection.adapter.RecyclerAdapter
+import com.example.hw3.avatarselection.model.Data
 import com.example.hw3.base.BaseFragment
 
 class AvatarFragment : BaseFragment() {
