@@ -21,6 +21,7 @@ abstract class BaseFragment : Fragment(), FragmentInterface {
     override fun onResume() {
         super.onResume()
 
+        // Basic functionality to show or hide BottomNavigationView
         val mainActivity = activity as MainActivity
         if (isNavigationbarVisible())
             mainActivity.showNavigation()

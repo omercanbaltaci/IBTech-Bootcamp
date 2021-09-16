@@ -27,6 +27,7 @@ class AvatarFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // The data, basically
         val dataList = ArrayList<Data>()
         dataList.add(Data(RecyclerAdapter.VIEW_TYPE_ONE, getString(R.string.choose_avatar)))
         dataList.add(Data(RecyclerAdapter.VIEW_TYPE_TWO, null, R.drawable.ic_avatar1))
@@ -39,11 +40,14 @@ class AvatarFragment : BaseFragment() {
         dataList.add(Data(RecyclerAdapter.VIEW_TYPE_TWO, null, R.drawable.ic_avatar8))
         dataList.add(Data(RecyclerAdapter.VIEW_TYPE_TWO, null, R.drawable.ic_avatar9))
 
+        // Get the adapter and the recyclerview here
         val adapter = RecyclerAdapter(requireContext(), dataList)
         recyclerView = activity?.findViewById(R.id.recyclerview) ?: RecyclerView(requireContext())
 
+        // Instantiate the LayoutManager as grid and give it a span count of 3
         val layoutManager = GridLayoutManager(requireContext(), 3)
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            // So if position is 0 span count is 1, if not 3
             override fun getSpanSize(position: Int): Int {
                 return when (position) {
                     0 -> 3

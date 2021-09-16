@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_container)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
+        // Disable the tinting of BNV, to show actual icons
         bottomNavigationView.itemIconTintList = null
     }
 

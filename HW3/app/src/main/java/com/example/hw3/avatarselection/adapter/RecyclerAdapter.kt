@@ -11,55 +11,66 @@ import com.example.hw3.avatarselection.model.Data
 import com.example.hw3.R
 
 class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    // These global variables help selecting and deselecting avatars
     var selectedItemPos = -1
     var lastItemSelectedPos = -1
 
+    // Indicators for view types
     companion object {
         const val VIEW_TYPE_ONE = 1
         const val VIEW_TYPE_TWO = 2
     }
 
+    // First view, takes whole first row of the GridLayout
     private inner class View1ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var message: TextView = itemView.findViewById(R.id.avatar_text)
+        var message: TextView = itemView.findViewById(R.id.avatar_text)     // Get the textview here
         fun bind (position: Int) {
             val recyclerViewModel = list[position]
-            message.text = recyclerViewModel.text
-            print(recyclerViewModel.text)
+            message.text = recyclerViewModel.text                           // Change it here
         }
     }
 
     private inner class View2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var avatar: ImageView = itemView.findViewById(R.id.avatar_image)
+        var avatar: ImageView = itemView.findViewById(R.id.avatar_image)    // Get imageview here
         fun bind (position: Int) {
             val recyclerViewModel = list[position]
             recyclerViewModel.avatar?.let {
-                avatar.setImageResource(it)
+                avatar.setImageResource(it)                                 // If it's not null, then populate it
             }
         }
 
+        /*
+        What is meant by checkbox here is the imageview under the avatars which
+        gets changed by user's selection
+         */
         val checkbox: ImageView = itemView.findViewById(R.id.checkbox_icon)
         fun default() {
-            checkbox.setImageResource(0)
+            checkbox.setImageResource(0)                        // Meaning, no image source
         }
 
         fun selected() {
-            checkbox.setImageResource(R.drawable.ic_checked)
+            checkbox.setImageResource(R.drawable.ic_checked)    // Set it checked
         }
 
         init {
+            /*
+            Whatever position the adapter gives, selectedposition gets it,
+            then we notify the observers about that something has been changed in the logic
+             */
             itemView.setOnClickListener {
                 selectedItemPos = adapterPosition
-                if(lastItemSelectedPos == -1)
-                    lastItemSelectedPos = selectedItemPos
+                lastItemSelectedPos = if(lastItemSelectedPos == -1)
+                    selectedItemPos
                 else {
                     notifyItemChanged(lastItemSelectedPos)
-                    lastItemSelectedPos = selectedItemPos
+                    selectedItemPos
                 }
                 notifyItemChanged(selectedItemPos)
             }
         }
     }
 
+    // Here we select if the model wants the first view, the text, or the second view, the avatar
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_ONE) {
             View1ViewHolder(
@@ -72,6 +83,10 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
         }
     }
 
+    /*
+    Basic onBind function but what it also does is if selecteditem is really
+    eqaul to the position then change it's imageview via selected()
+     */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (list[position].viewType == VIEW_TYPE_ONE && holder is View1ViewHolder) {
             holder.bind(position)
