@@ -18,7 +18,7 @@
         android:background="@drawable/bottom_navigation_background"
         app:itemTextColor="@drawable/bottom_nav_color"
         app:itemTextAppearanceActive="@style/BottomNavigation.ActiveItemTextAppearance"
-        app:itemTextAppearanceInactive="@style/BottomNavigation.InactiveItemTextAppearance"/>
+        app:itemTextAppearanceInactive="@style/BottomNavigation.InactiveItemTextAppearance" />
 
     <fragment
         android:id="@+id/nav_host_fragment_container"

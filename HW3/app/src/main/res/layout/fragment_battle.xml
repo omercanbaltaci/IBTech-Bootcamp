@@ -37,14 +37,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline1"
         app:layout_constraintGuide_end="20dp"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline2"
         app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -150,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/play_now"/>
+            android:text="@string/play_now" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -195,21 +195,21 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/single_play_now"/>
+            android:background="@drawable/single_play_now" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/play_now"
             style="@style/PlayNowDark"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
             android:src="@drawable/ic_rightarrow_black"
-            android:layout_marginRight="@dimen/battle_multi_text_margin_end"/>
+            android:layout_marginEnd="@dimen/battle_multi_text_margin_end" />
 
     </androidx.cardview.widget.CardView>
 

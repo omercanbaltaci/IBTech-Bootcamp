@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/subtext"
-        android:layout_marginBottom="@dimen/battle_multi_text_margin_end"/>
+        android:layout_marginBottom="@dimen/battle_multi_text_margin_end" />
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/EmptyStateSub"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/empty_decks_art"
-        android:layout_marginBottom="@dimen/empty_decks_sub_margin"/>
+        android:layout_marginBottom="@dimen/empty_decks_sub_margin" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/empty_decks_art"
@@ -38,6 +38,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57"/>
+        app:layout_constraintVertical_bias="0.57" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

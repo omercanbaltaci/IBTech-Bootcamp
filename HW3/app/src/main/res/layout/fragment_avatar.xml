@@ -16,6 +16,6 @@
         android:id="@+id/recyclerview"
         android:orientation="vertical"
         app:spanCount="3"
-        android:overScrollMode="never"/>
+        android:overScrollMode="never" />
 
 </FrameLayout>

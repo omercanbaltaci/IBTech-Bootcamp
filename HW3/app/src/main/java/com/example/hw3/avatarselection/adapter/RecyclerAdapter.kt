@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hw3.R
 import com.example.hw3.avatarselection.model.Data
 
-class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // These global variables help selecting and deselecting avatars
     var selectedItemPos = -1
     var lastItemSelectedPos = -1
@@ -24,7 +25,7 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
     // First view, takes the whole first row of the GridLayout
     private inner class View1ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var message: TextView = itemView.findViewById(R.id.avatar_text)     // Get the textview here
-        fun bind (position: Int) {
+        fun bind(position: Int) {
             val recyclerViewModel = list[position]
             message.text = recyclerViewModel.text                           // Change it here
         }
@@ -33,7 +34,7 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
     // Second view, represents the avatars
     private inner class View2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var avatar: ImageView = itemView.findViewById(R.id.avatar_image)    // Get imageview here
-        fun bind (position: Int) {
+        fun bind(position: Int) {
             val recyclerViewModel = list[position]
             recyclerViewModel.avatar?.let {
                 avatar.setImageResource(it)                                 // If it's not null, then populate it
@@ -60,7 +61,7 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
              */
             itemView.setOnClickListener {
                 selectedItemPos = adapterPosition
-                lastItemSelectedPos = if(lastItemSelectedPos == -1)
+                lastItemSelectedPos = if (lastItemSelectedPos == -1)
                     selectedItemPos
                 else {
                     notifyItemChanged(lastItemSelectedPos)
@@ -94,7 +95,7 @@ class RecyclerAdapter(private val context: Context, var list: ArrayList<Data>) :
         } else {
             (holder as View2ViewHolder).bind(position)
 
-            if(position == selectedItemPos)
+            if (position == selectedItemPos)
                 holder.selected()
             else
                 holder.default()
