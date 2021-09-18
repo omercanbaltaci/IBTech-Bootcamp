@@ -5,7 +5,7 @@
             android:shape="ring"
             android:thicknessRatio="30"
             android:useLevel="false">
-            <solid android:color="@color/progress_background"/>
+            <solid android:color="@color/progress_background" />
         </shape>
     </item>
     <item>
@@ -16,7 +16,7 @@
                 android:shape="ring"
                 android:thicknessRatio="30"
                 android:useLevel="true">
-                <solid android:color="@color/progress_foreground"/>
+                <solid android:color="@color/progress_foreground" />
             </shape>
         </rotate>
     </item>
