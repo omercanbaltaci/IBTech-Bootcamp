@@ -9,7 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="com.example.hw3.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_battleFragment"
             app:destination="@id/battleFragment"
@@ -20,7 +20,7 @@
         android:id="@+id/battleFragment"
         android:name="com.example.hw3.BattleFragment"
         android:label="fragment_battle"
-        tools:layout="@layout/fragment_battle" >
+        tools:layout="@layout/fragment_battle">
         <action
             android:id="@+id/action_battleFragment_to_myDecksFragment"
             app:destination="@id/myDecksFragment" />
@@ -29,7 +29,7 @@
         android:id="@+id/myDecksFragment"
         android:name="com.example.hw3.MyDecksFragment"
         android:label="fragment_my_decks"
-        tools:layout="@layout/fragment_my_decks" >
+        tools:layout="@layout/fragment_my_decks">
         <action
             android:id="@+id/action_myDecksFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -38,7 +38,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.hw3.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_avatarFragment"
             app:destination="@id/avatarFragment"
@@ -51,5 +51,5 @@
         android:id="@+id/avatarFragment"
         android:name="com.example.hw3.AvatarFragment"
         android:label="fragment_avatar"
-        tools:layout="@layout/fragment_avatar"/>
+        tools:layout="@layout/fragment_avatar" />
 </navigation>

@@ -4,5 +4,5 @@
     <solid android:color="@color/splash_background" />
     <stroke
         android:width="3dp"
-        android:color="@color/battle_single"/>
+        android:color="@color/battle_single" />
 </shape>
