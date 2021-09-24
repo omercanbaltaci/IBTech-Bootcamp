@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Sizes -->
+    <dimen name="login_big">28sp</dimen>
+    <dimen name="login_small">18sp</dimen>
+    <dimen name="edittext">18sp</dimen>
+    <dimen name="logintext">18sp</dimen>
+    <dimen name="home_fragment_title">32sp</dimen>
+    <dimen name="rowtask">18sp</dimen>
+
+    <dimen name="splash_progress_width">300dp</dimen>
+    <dimen name="splash_progress_height">5dp</dimen>
+    <dimen name="splash_progress_corner_radius">200dp</dimen>
+    <dimen name="login_logo_top_margin">102dp</dimen>
+    <dimen name="login_hello_margin_top">130dp</dimen>
+    <dimen name="login_hello_margin_start">66dp</dimen>
+    <dimen name="login_please_margin_top">10dp</dimen>
+    <dimen name="edittext_height">60dp</dimen>
+    <dimen name="edittext_marginstartend">36dp</dimen>
+    <dimen name="edittext_margin_top">30dp</dimen>
+    <dimen name="edittext_password_margin_top">15dp</dimen>
+    <dimen name="edittext_padding_start">30dp</dimen>
+    <dimen name="login_margin_bottom">50dp</dimen>
+    <dimen name="home_fragment_title_margin">60dp</dimen>
+    <dimen name="home_fragment_more_marginE">12dp</dimen>
+    <dimen name="home_fragment_more_marginT">68dp</dimen>
+    <dimen name="home_fragment_rv_margin_top">34dp</dimen>
+    <dimen name="row_task_text_margin">16dp</dimen>
+    <dimen name="row_task_image_margin">16dp</dimen>
+    <dimen name="row_task_constraint_padding_top">16dp</dimen>
+    <dimen name="cardview_size">64dp</dimen>
+    <dimen name="cardview_end_margin">16dp</dimen>
+    <dimen name="cardview_bottom_margin">44dp</dimen>
+</resources>

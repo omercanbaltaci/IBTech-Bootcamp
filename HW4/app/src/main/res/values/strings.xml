@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">HW4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_hello">Merhaba,</string>
+    <string name="login_please">Lütfen aşağıdaki bilgileri doldurunuz.</string>
+    <string name="email_hint">E-posta Adresiniz</string>
+    <string name="password_hint">Şifreniz</string>
+    <string name="phone_number">Telefon Numaranız (Opsiyonel)</string>
+    <string name="login_text">Giriş Yap</string>
+    <string name="login_error">Bir hata oluştu.</string>
+    <string name="please_fill">Lütfen alanları doldurunuz.</string>
+    <string name="home_fragment_title">Today</string>
+    <string name="no_tasks">Eklenmiş task bulunamamıştır.</string>
+    <string name="add_task">ADD TASK</string>
+    <string name="cant_fetch_tasks">Couldn\'t fetch tasks.</string>
+    <string name="wait_for_tasks">Your tasks are being fetched.</string>
+    <string name="no_more_tasks">No more tasks.</string>
+    <string name="failed">Operation failed.</string>
+    <string name="completed_successfully">Operation completed.</string>
+    <string name="add_task_material">Add Task</string>
+    <string name="cancel">Cancel</string>
+</resources>
