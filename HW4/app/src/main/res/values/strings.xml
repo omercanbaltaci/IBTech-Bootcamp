@@ -20,4 +20,5 @@
     <string name="completed_successfully">Operation completed.</string>
     <string name="add_task_material">Add Task</string>
     <string name="cancel">Cancel</string>
+    <string name="tasker_title_text">Tasker</string>
 </resources>

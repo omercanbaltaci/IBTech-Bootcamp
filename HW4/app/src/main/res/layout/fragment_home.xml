@@ -12,7 +12,7 @@
         style="@style/HomeFragmentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/home_fragment_title_margin"
+        android:layout_marginStart="@dimen/home_fragment_title_margin_left"
         android:layout_marginTop="@dimen/home_fragment_title_margin"
         android:text="@string/home_fragment_title"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,12 +51,12 @@
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/floatingbtn"
         android:layout_width="@dimen/cardview_size"
         android:layout_height="@dimen/cardview_size"
         android:layout_marginEnd="@dimen/cardview_end_margin"
         android:layout_marginBottom="@dimen/cardview_bottom_margin"
         app:cardCornerRadius="@dimen/cardview_size"
-        android:id="@+id/floatingbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 

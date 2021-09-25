@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.navigation.fragment.findNavController
 import com.example.hw3.base.BaseFragment
 import com.example.hw4.R
+import com.example.hw4.model.User
 import com.example.hw4.response.LoginResponse
 import com.example.hw4.service.BaseCallBack
 import com.example.hw4.service.ServiceConnector
@@ -23,6 +24,7 @@ class LoginFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        changeStatusBarColor(R.color.splash_background)
         prepareView()
     }
 
@@ -51,6 +53,7 @@ class LoginFragment : BaseFragment() {
                     override fun onSuccess(loginResponse: LoginResponse) {
                         super.onSuccess(loginResponse)
 
+                        User.getCurrentInstance().token = loginResponse.token
                         saveDataAsString(USER_TOKEN, loginResponse.token)
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     }

@@ -1,5 +1,6 @@
 package com.example.hw4.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hw4.R
 import com.example.hw4.base.BaseRecyclerViewItemClickListener
 import com.example.hw4.model.Task
+import ru.rambler.libs.swipe_layout.SwipeLayout
 
 class RecyclerAdapter(var list: MutableList<Task>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -22,21 +24,64 @@ class RecyclerAdapter(var list: MutableList<Task>) :
         this.itemClickListener = itemClickListener
     }
 
+    companion object {
+        const val VIEW_TYPE_ONE = 1
+        const val VIEW_TYPE_TWO = 2
+    }
+
     // Here we select if the model wants the first view, the text, or the second view, the avatar
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return TaskViewHolder(
+        return if (viewType == VIEW_TYPE_ONE) {
+            TaskViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.row_task, parent, false)
+            )
+        } else {
+            ProgressBarViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.row_progress, parent, false)
+            )
+        }
+        /*return TaskViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.row_task, parent, false)
-        )
+        )*/
     }
 
     /*
     Basic onBind function but what it also does is if selecteditem is really
-    eqaul to the position then change it's imageview via selected()
+    equal to the position then change it's imageview via selected()
      */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val task = this.list[position]
-        (holder as TaskViewHolder).setData(task)
-        holder.setOnItemClickListener(task, this.itemClickListener!!)
+        if (list[position].viewType == VIEW_TYPE_ONE && holder is TaskViewHolder) {
+            if (!task.isSwiped) holder.swipeLayout.reset()
+            else holder.swipeLayout.animateSwipeRight()
+            holder.setData(task)
+            holder.setOnItemClickListener(task, this.itemClickListener!!)
+
+            holder.swipeLayout.setOnSwipeListener(object : SwipeLayout.OnSwipeListener {
+                override fun onBeginSwipe(swipeLayout: SwipeLayout?, moveToRight: Boolean) {
+                    task.isSwiped = !task.isSwiped
+                }
+
+                override fun onSwipeClampReached(swipeLayout: SwipeLayout?, moveToRight: Boolean) {
+                    Log.d("Operation: ", "skipped.")
+                }
+
+                override fun onLeftStickyEdge(swipeLayout: SwipeLayout?, moveToRight: Boolean) {
+                    Log.d("Operation: ", "skipped.")
+                }
+
+                override fun onRightStickyEdge(swipeLayout: SwipeLayout?, moveToRight: Boolean) {
+                    Log.d("Operation: ", "skipped.")
+                }
+
+            })
+        } else {
+            this.list[position]
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return list[position].viewType
     }
 
     override fun getItemCount(): Int = list.size
@@ -46,6 +91,7 @@ class RecyclerAdapter(var list: MutableList<Task>) :
 class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var completion: ImageView = itemView.findViewById(R.id.row_task_image)
     var description: TextView = itemView.findViewById(R.id.row_task_text)
+    var swipeLayout: SwipeLayout = itemView.findViewById(R.id.swipe_layout)
 
     fun setData(task: Task) {
         changeCompletion(task)
@@ -65,6 +111,9 @@ class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         delete.setOnClickListener {
             itemClickListener!!.onItemClicked(task, it.id)
         }
+        swipeLayout.setOnClickListener {
+            itemClickListener!!.onItemClicked(task, it.id)
+        }
     }
 
     private fun changeCompletion(task: Task) {
@@ -72,3 +121,5 @@ class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         else completion.setImageResource(R.drawable.ic_unmarked)
     }
 }
+
+class ProgressBarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

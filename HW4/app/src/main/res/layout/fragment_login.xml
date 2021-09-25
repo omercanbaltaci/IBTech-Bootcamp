@@ -5,15 +5,16 @@
     android:id="@+id/myLoginFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/login_background"
+    android:background="@color/splash_background"
     tools:context=".ui.LoginFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/login_screen_logo"
+        style="@style/TaskerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/login_logo_top_margin"
-        android:src="@drawable/ic_login_logo"
+        android:text="@string/tasker_title_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,22 +73,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_email" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edittext_phone"
-        style="@style/EditText"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/edittext_height"
-        android:layout_marginStart="@dimen/edittext_marginstartend"
-        android:layout_marginTop="@dimen/edittext_password_margin_top"
-        android:layout_marginEnd="@dimen/edittext_marginstartend"
-        android:background="@drawable/edittext_background"
-        android:hint="@string/phone_number"
-        android:paddingStart="@dimen/edittext_padding_start"
-        android:paddingEnd="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_password" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_text_button"

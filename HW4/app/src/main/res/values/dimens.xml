@@ -7,6 +7,7 @@
     <dimen name="logintext">18sp</dimen>
     <dimen name="home_fragment_title">32sp</dimen>
     <dimen name="rowtask">18sp</dimen>
+    <dimen name="taskertitle">50sp</dimen>
 
     <dimen name="splash_progress_width">300dp</dimen>
     <dimen name="splash_progress_height">5dp</dimen>
@@ -21,7 +22,8 @@
     <dimen name="edittext_password_margin_top">15dp</dimen>
     <dimen name="edittext_padding_start">30dp</dimen>
     <dimen name="login_margin_bottom">50dp</dimen>
-    <dimen name="home_fragment_title_margin">60dp</dimen>
+    <dimen name="home_fragment_title_margin">30dp</dimen>
+    <dimen name="home_fragment_title_margin_left">60dp</dimen>
     <dimen name="home_fragment_more_marginE">12dp</dimen>
     <dimen name="home_fragment_more_marginT">68dp</dimen>
     <dimen name="home_fragment_rv_margin_top">34dp</dimen>

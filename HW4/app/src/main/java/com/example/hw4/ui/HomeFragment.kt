@@ -1,6 +1,7 @@
 package com.example.hw4.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -21,7 +22,7 @@ import com.example.hw4.service.ServiceConnector
 import com.example.hw4.utils.gone
 import com.example.hw4.utils.toast
 import com.example.hw4.utils.visible
-
+import ru.rambler.libs.swipe_layout.SwipeLayout
 
 class HomeFragment : BaseFragment() {
     private lateinit var recyclerView: RecyclerView
@@ -31,9 +32,13 @@ class HomeFragment : BaseFragment() {
     private val LIMIT = 5
     private var SKIP = 5
     private val dataList = mutableListOf<Task>()
+    private val progressTask = Task()
+    private var fetchCount = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        changeStatusBarColor(R.color.white)
 
         val adapter = RecyclerAdapter(
             dataList,
@@ -60,7 +65,7 @@ class HomeFragment : BaseFragment() {
                                 .enqueue(object : BaseCallBack<UpdateResponse>() {
                                     override fun onSuccess(updateResponse: UpdateResponse) {
                                         super.onSuccess(updateResponse)
-                                        toast(getString(R.string.completed_successfully), 200)
+                                        toast(getString(R.string.completed_successfully), 100)
                                     }
 
                                     override fun onFailure() {
@@ -70,6 +75,7 @@ class HomeFragment : BaseFragment() {
                                 })
                         }
                         R.id.delete_bg -> {
+                            SKIP--
                             val clickedIndex = dataList.indexOf(clickedObject)
                             dataList.removeAt(clickedIndex)
                             recyclerView.adapter?.notifyItemRemoved(clickedIndex)
@@ -77,7 +83,14 @@ class HomeFragment : BaseFragment() {
                                 .enqueue(object : BaseCallBack<UpdateResponse>() {
                                     override fun onSuccess(updateResponse: UpdateResponse) {
                                         super.onSuccess(updateResponse)
-                                        toast(getString(R.string.completed_successfully), 200)
+                                        if (dataList.size == 0) {
+                                            activity?.findViewById<RecyclerView>(R.id.home_rv)
+                                                ?.gone()
+                                            activity?.findViewById<TextView>(R.id.home_tv)
+                                                ?.visible()
+                                        }
+
+                                        toast(getString(R.string.completed_successfully), 100)
                                     }
 
                                     override fun onFailure() {
@@ -105,21 +118,33 @@ class HomeFragment : BaseFragment() {
             activity?.findViewById(R.id.home_rv) ?: RecyclerView(requireContext())
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            var refreshList = false
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if (dy <= 0) refreshList = true
+            }
+
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
                     && pageNo < pageCount
                     && !recyclerView.canScrollVertically(1)
+                    && refreshList
+                    && !dataList.contains(progressTask)
                 ) {
-                    getMyTasks(
-                        SKIP, adapter
-                    )
+                    fetchCount++
+                    progressTask.viewType = 2
+                    dataList.add(progressTask)
+                    scrollToLast()
+                    recyclerView.adapter?.notifyItemInserted(dataList.size - 1)
+                    getMyTasks(SKIP, adapter)
                     SKIP += LIMIT
                     pageNo++
-                } else if (pageNo == pageCount) toast(
-                    getString(R.string.no_more_tasks),
-                    500
-                )
+                } else if (pageNo == pageCount) {
+                    //toast(getString(R.string.no_more_tasks),100)
+                    Log.d("Task state ", "no more tasks.")
+                }
             }
         })
 
@@ -133,6 +158,9 @@ class HomeFragment : BaseFragment() {
                         .enqueue(object : BaseCallBack<UpdateResponse>() {
                             override fun onSuccess(updateResponse: UpdateResponse) {
                                 super.onSuccess(updateResponse)
+                                activity?.findViewById<RecyclerView>(R.id.home_rv)?.visible()
+                                activity?.findViewById<TextView>(R.id.home_tv)?.gone()
+
                                 dataList.add(updateResponse.data)
                                 recyclerView.adapter?.notifyItemInserted(dataList.size - 1)
                                 scrollToLast()
@@ -156,6 +184,10 @@ class HomeFragment : BaseFragment() {
             .enqueue(object : BaseCallBack<TaskResponse>() {
                 override fun onSuccess(taskResponse: TaskResponse) {
                     super.onSuccess(taskResponse)
+                    if (fetchCount != 0) {
+                        dataList.removeAt(dataList.size - 1)
+                        recyclerView.adapter?.notifyItemRemoved(dataList.size - 1)
+                    }
                     limitedTaskCount = taskResponse.count
                     if (taskResponse.count == 0) {
                         activity?.findViewById<RecyclerView>(R.id.home_rv)?.gone()

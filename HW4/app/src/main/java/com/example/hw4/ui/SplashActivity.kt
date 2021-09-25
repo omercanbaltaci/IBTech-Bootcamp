@@ -19,6 +19,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        changeStatusBarColor(R.color.splash_background)
+
         val progressBar = findViewById<LinearProgressIndicator>(R.id.splash_progress_bar)
 
         if (isLoggedIn()) {
@@ -63,5 +65,9 @@ class SplashActivity : AppCompatActivity() {
         token = sh.getString(USER_TOKEN, "")!!
 
         return token!!
+    }
+
+    private fun changeStatusBarColor(id: Int) {
+        this.window.statusBarColor = resources.getColor(id)
     }
 }
