@@ -161,9 +161,9 @@ class HomeFragment : BaseFragment() {
                                 activity?.findViewById<RecyclerView>(R.id.home_rv)?.visible()
                                 activity?.findViewById<TextView>(R.id.home_tv)?.gone()
 
-                                dataList.add(updateResponse.data)
+                                /*dataList.add(updateResponse.data)
                                 recyclerView.adapter?.notifyItemInserted(dataList.size - 1)
-                                scrollToLast()
+                                scrollToLast()*/
                                 toast(getString(R.string.completed_successfully))
                             }
 
