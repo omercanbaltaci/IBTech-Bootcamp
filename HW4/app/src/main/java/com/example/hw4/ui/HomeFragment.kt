@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.getInputField
 import com.afollestad.materialdialogs.input.input
-import com.example.hw3.base.BaseFragment
 import com.example.hw4.R
 import com.example.hw4.adapter.RecyclerAdapter
+import com.example.hw4.base.BaseFragment
 import com.example.hw4.base.BaseRecyclerViewItemClickListener
 import com.example.hw4.model.Task
 import com.example.hw4.response.TaskResponse
@@ -32,6 +32,7 @@ class HomeFragment : BaseFragment() {
     private val dataList = mutableListOf<Task>()
     private val progressTask = Task()   // Initializing a ProgressBarView here
     private var fetchedBefore = false   // We haven't fetched any tasks yet.
+    private var initialTaskCount = 0
     private var totalTaskCount = 0
     private var refreshList = false
     private val tempList = mutableListOf<Task>()
@@ -60,6 +61,7 @@ class HomeFragment : BaseFragment() {
                                 }
                             }
 
+                            // We are filling in a map to send over with the request
                             val param = mutableMapOf<String, Boolean>().apply {
                                 put(COMPLETED_BODY, flag)
                             }
@@ -77,7 +79,13 @@ class HomeFragment : BaseFragment() {
                                 })
                         }
                         R.id.delete_bg -> {
-                            SKIP--
+                            totalTaskCount--
+                            if (totalTaskCount + LIMIT == pageCount * LIMIT) {
+                                // If we get into this if condition, meaning the page number is decreased by 1
+                                pageCount--
+                                pageNo--
+                                SKIP -= 5
+                            } else SKIP--
                             val clickedIndex = dataList.indexOf(clickedObject)
                             dataList.removeAt(clickedIndex)
                             recyclerView.adapter?.notifyItemRemoved(clickedIndex)
@@ -136,15 +144,22 @@ class HomeFragment : BaseFragment() {
                     && refreshList
                     && !dataList.contains(progressTask)
                 ) {
-                    fetchedBefore = true
-                    progressTask.viewType = 2
+                    fetchedBefore = true            // Make sure that we scroll the RV at least once
+                    progressTask.viewType = 2       // Insert the progressview
                     dataList.add(progressTask)
                     scrollToLast()
                     recyclerView.adapter?.notifyItemInserted(dataList.size - 1)
                     getMyTasks(SKIP, adapter)
                     SKIP += LIMIT
                     pageNo++
-
+                } else if (initialTaskCount != totalTaskCount) {
+                    // If the tasks we added are within the page range they'll be added automatically.
+                    dataList.addAll(tempList)
+                    for (i in dataList.size - tempList.size until dataList.size - 1) {
+                        recyclerView.adapter?.notifyItemInserted(i)
+                    }
+                    tempList.clear()
+                    initialTaskCount = totalTaskCount
                 } else if (pageNo == pageCount) {
                     toast(getString(R.string.no_more_tasks), 20)
                 }
@@ -206,8 +221,6 @@ class HomeFragment : BaseFragment() {
                             tempList.addAll(taskResponse.data)
                             dataList.addAll(tempList)
                             tempList.clear()
-                            /*taskResponse.data.addAll(tempList)
-                            tempList.clear()*/
                         } else dataList.addAll(taskResponse.data)
                         scrollToLast()
                         recyclerView.adapter = adapter
@@ -234,6 +247,7 @@ class HomeFragment : BaseFragment() {
                  * If it's 15, it will be 3.
                  */
                 totalTaskCount = taskResponse.count
+                initialTaskCount = taskResponse.count
                 val quotient = taskResponse.count / SKIP
                 pageCount = if (taskResponse.count == quotient * SKIP) quotient
                 else quotient + 1
@@ -248,7 +262,6 @@ class HomeFragment : BaseFragment() {
 
     fun didPageCountChange(taskCount: Int): Boolean {
         return if (pageCount * LIMIT < taskCount) {
-            toast("niye artıyor aq", 50)
             pageCount++
             true
         } else false

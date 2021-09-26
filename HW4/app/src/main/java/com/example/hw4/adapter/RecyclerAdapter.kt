@@ -24,6 +24,7 @@ class RecyclerAdapter(var list: MutableList<Task>) :
         this.itemClickListener = itemClickListener
     }
 
+    // First viewtype is for the tasks, the other one if for the progressbar
     companion object {
         const val VIEW_TYPE_ONE = 1
         const val VIEW_TYPE_TWO = 2
@@ -40,9 +41,6 @@ class RecyclerAdapter(var list: MutableList<Task>) :
                 LayoutInflater.from(parent.context).inflate(R.layout.row_progress, parent, false)
             )
         }
-        /*return TaskViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.row_task, parent, false)
-        )*/
     }
 
     /*
@@ -52,6 +50,10 @@ class RecyclerAdapter(var list: MutableList<Task>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val task = this.list[position]
         if (list[position].viewType == VIEW_TYPE_ONE && holder is TaskViewHolder) {
+            /*
+             * So here, if one of the tasks views are swiped, we check, when we come back to it
+             * if its "isSwiped" attribute is true, then we swipe it to right.
+             */
             if (!task.isSwiped) holder.swipeLayout.reset()
             else holder.swipeLayout.animateSwipeRight()
             holder.setData(task)
@@ -109,9 +111,6 @@ class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
         val delete = itemView.findViewById<FrameLayout>(R.id.delete_bg)
         delete.setOnClickListener {
-            itemClickListener!!.onItemClicked(task, it.id)
-        }
-        swipeLayout.setOnClickListener {
             itemClickListener!!.onItemClicked(task, it.id)
         }
     }
