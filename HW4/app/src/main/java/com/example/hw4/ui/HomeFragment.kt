@@ -183,7 +183,7 @@ class HomeFragment : BaseFragment() {
                                 refreshList = true
                                 activity?.findViewById<RecyclerView>(R.id.home_rv)?.visible()
                                 activity?.findViewById<TextView>(R.id.home_tv)?.gone()
-                                toast(getString(R.string.completed_successfully))
+                                toast(getString(R.string.task_has_been_added))
                             }
 
                             override fun onFailure() {

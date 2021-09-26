@@ -21,4 +21,5 @@
     <string name="add_task_material">Add Task</string>
     <string name="cancel">Cancel</string>
     <string name="tasker_title_text">Tasker</string>
+    <string name="task_has_been_added">Your task has been added. Scroll to refresh.</string>
 </resources>
