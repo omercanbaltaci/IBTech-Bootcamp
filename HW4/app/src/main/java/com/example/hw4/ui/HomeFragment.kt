@@ -144,7 +144,6 @@ class HomeFragment : BaseFragment() {
                     getMyTasks(SKIP, adapter)
                     SKIP += LIMIT
                     pageNo++
-                    toast("pageNo:" + pageNo + "pagecount:" + pageCount, 50)
 
                 } else if (pageNo == pageCount) {
                     toast(getString(R.string.no_more_tasks), 20)
