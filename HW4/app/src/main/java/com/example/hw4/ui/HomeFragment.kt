@@ -1,7 +1,6 @@
 package com.example.hw4.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -19,21 +18,23 @@ import com.example.hw4.response.TaskResponse
 import com.example.hw4.response.UpdateResponse
 import com.example.hw4.service.BaseCallBack
 import com.example.hw4.service.ServiceConnector
+import com.example.hw4.utils.COMPLETED_BODY
 import com.example.hw4.utils.gone
 import com.example.hw4.utils.toast
 import com.example.hw4.utils.visible
-import ru.rambler.libs.swipe_layout.SwipeLayout
 
 class HomeFragment : BaseFragment() {
     private lateinit var recyclerView: RecyclerView
-    private var pageCount = 0
-    private var pageNo = 1
-    private var limitedTaskCount = 0
+    private var pageCount = 0           // Initial number of pages
+    private var pageNo = 1              // We populate the RV at first, hence we are at page 1.
     private val LIMIT = 5
     private var SKIP = 5
     private val dataList = mutableListOf<Task>()
-    private val progressTask = Task()
-    private var fetchCount = 0
+    private val progressTask = Task()   // Initializing a ProgressBarView here
+    private var fetchedBefore = false   // We haven't fetched any tasks yet.
+    private var totalTaskCount = 0
+    private var refreshList = false
+    private val tempList = mutableListOf<Task>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,6 +47,7 @@ class HomeFragment : BaseFragment() {
                 override fun onItemClicked(clickedObject: Task, id: Int) {
                     when (id) {
                         R.id.complete_bg -> {
+                            // All this when block does is changing the ImageSource of the checkbox.
                             val flag: Boolean
                             when {
                                 clickedObject.completed -> {
@@ -59,7 +61,7 @@ class HomeFragment : BaseFragment() {
                             }
 
                             val param = mutableMapOf<String, Boolean>().apply {
-                                put("completed", flag)
+                                put(COMPLETED_BODY, flag)
                             }
                             ServiceConnector.restInterface.updateTask(clickedObject.id!!, param)
                                 .enqueue(object : BaseCallBack<UpdateResponse>() {
@@ -103,8 +105,8 @@ class HomeFragment : BaseFragment() {
                 }
             })
 
-        setPageCount()
-        getMyTasks(0, adapter)
+        setPageCount()                  // Setting how many pages we need here.
+        getMyTasks(0, adapter)      // Populate the RV with tasks after the view is created.
 
         when (pageCount) {
             0 -> toast(getString(R.string.wait_for_tasks), Toast.LENGTH_SHORT)
@@ -118,22 +120,23 @@ class HomeFragment : BaseFragment() {
             activity?.findViewById(R.id.home_rv) ?: RecyclerView(requireContext())
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            var refreshList = false
+
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
+                // Blocking the RV from triggering top scroll.
                 if (dy <= 0) refreshList = true
             }
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                    && pageNo < pageCount
+                    && (didPageCountChange(totalTaskCount) || pageNo < pageCount)
                     && !recyclerView.canScrollVertically(1)
                     && refreshList
                     && !dataList.contains(progressTask)
                 ) {
-                    fetchCount++
+                    fetchedBefore = true
                     progressTask.viewType = 2
                     dataList.add(progressTask)
                     scrollToLast()
@@ -141,16 +144,17 @@ class HomeFragment : BaseFragment() {
                     getMyTasks(SKIP, adapter)
                     SKIP += LIMIT
                     pageNo++
+                    toast("pageNo:" + pageNo + "pagecount:" + pageCount, 50)
+
                 } else if (pageNo == pageCount) {
-                    //toast(getString(R.string.no_more_tasks),100)
-                    Log.d("Task state ", "no more tasks.")
+                    toast(getString(R.string.no_more_tasks), 20)
                 }
             }
         })
 
         activity?.findViewById<CardView>(R.id.floatingbtn)?.setOnClickListener {
             MaterialDialog(requireContext()).show {
-                val dialog = input { dialog, text ->
+                val dialog = input { dialog, _ ->
                     val param = mutableMapOf<String, String>().apply {
                         put("description", dialog.getInputField().text.toString())
                     }
@@ -158,12 +162,13 @@ class HomeFragment : BaseFragment() {
                         .enqueue(object : BaseCallBack<UpdateResponse>() {
                             override fun onSuccess(updateResponse: UpdateResponse) {
                                 super.onSuccess(updateResponse)
+                                totalTaskCount++
+                                if (!didPageCountChange(totalTaskCount))
+                                    tempList.add(updateResponse.data)
+
+                                refreshList = true
                                 activity?.findViewById<RecyclerView>(R.id.home_rv)?.visible()
                                 activity?.findViewById<TextView>(R.id.home_tv)?.gone()
-
-                                /*dataList.add(updateResponse.data)
-                                recyclerView.adapter?.notifyItemInserted(dataList.size - 1)
-                                scrollToLast()*/
                                 toast(getString(R.string.completed_successfully))
                             }
 
@@ -184,16 +189,27 @@ class HomeFragment : BaseFragment() {
             .enqueue(object : BaseCallBack<TaskResponse>() {
                 override fun onSuccess(taskResponse: TaskResponse) {
                     super.onSuccess(taskResponse)
-                    if (fetchCount != 0) {
+                    /*
+                     * Removing the ProgressBar view from the RV.
+                     * If we fetch any tasks, anytime we come down here this if condition will
+                     * remove the item at the last position, which is the ProgressBar view.
+                     */
+                    if (fetchedBefore) {
                         dataList.removeAt(dataList.size - 1)
                         recyclerView.adapter?.notifyItemRemoved(dataList.size - 1)
                     }
-                    limitedTaskCount = taskResponse.count
+
                     if (taskResponse.count == 0) {
                         activity?.findViewById<RecyclerView>(R.id.home_rv)?.gone()
                         activity?.findViewById<TextView>(R.id.home_tv)?.visible()
                     } else {
-                        dataList.addAll(taskResponse.data)
+                        if (tempList.isNotEmpty()) {
+                            tempList.addAll(taskResponse.data)
+                            dataList.addAll(tempList)
+                            tempList.clear()
+                            /*taskResponse.data.addAll(tempList)
+                            tempList.clear()*/
+                        } else dataList.addAll(taskResponse.data)
                         scrollToLast()
                         recyclerView.adapter = adapter
                     }
@@ -206,10 +222,19 @@ class HomeFragment : BaseFragment() {
             })
     }
 
+    /*
+     * All below function does is designating a page number for paging functionality.
+     * We need this number to block the user from further reloading new tasks.
+     */
     private fun setPageCount() {
         ServiceConnector.restInterface.getAllTasks().enqueue(object : BaseCallBack<TaskResponse>() {
             override fun onSuccess(taskResponse: TaskResponse) {
                 super.onSuccess(taskResponse)
+                /*
+                 * Let's say there is 36 tasks, if SKIP is 5, page count will be 6.
+                 * If it's 15, it will be 3.
+                 */
+                totalTaskCount = taskResponse.count
                 val quotient = taskResponse.count / SKIP
                 pageCount = if (taskResponse.count == quotient * SKIP) quotient
                 else quotient + 1
@@ -222,6 +247,15 @@ class HomeFragment : BaseFragment() {
         })
     }
 
+    fun didPageCountChange(taskCount: Int): Boolean {
+        return if (pageCount * LIMIT < taskCount) {
+            toast("niye artıyor aq", 50)
+            pageCount++
+            true
+        } else false
+    }
+
+    // Self-explanatory function. This will force the RecyclerView to scroll to last item's position.
     fun scrollToLast() {
         recyclerView.scrollToPosition(dataList.size - 1)
     }
