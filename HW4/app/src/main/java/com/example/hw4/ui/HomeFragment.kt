@@ -84,7 +84,7 @@ class HomeFragment : BaseFragment() {
                                 // If we get into this if condition, meaning the page number is decreased by 1
                                 pageCount--
                                 pageNo--
-                                SKIP -= 5
+                                SKIP -= LIMIT
                             } else SKIP--
                             val clickedIndex = dataList.indexOf(clickedObject)
                             dataList.removeAt(clickedIndex)
