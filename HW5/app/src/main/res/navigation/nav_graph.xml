@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/viewPagerContainerFragment">
+    <fragment
+        android:id="@+id/filmListFragment"
+        android:name="com.example.hw5.ui.filmlist.FilmListFragment"
+        android:label="FilmListFragment"
+        tools:layout="@layout/fragment_film_list" />
+    <fragment
+        android:id="@+id/filmDetailsFragment"
+        android:name="com.example.hw5.ui.filmlist.FilmDetailsFragment"
+        android:label="fragment_film_details"
+        tools:layout="@layout/fragment_film_details" />
+    <fragment
+        android:id="@+id/viewPagerContainerFragment"
+        android:name="com.example.hw5.viewpagerfragment.ViewPagerContainerFragment"
+        android:label="ViewPagerContainerFragment"
+        tools:layout="@layout/fragment_view_pager_container">
+        <action
+            android:id="@+id/action_viewPagerContainerFragment_to_filmListFragment"
+            app:destination="@id/filmListFragment" />
+        <action
+            android:id="@+id/action_viewPagerContainerFragment_to_filmDetailsFragment"
+            app:destination="@id/filmDetailsFragment" />
+        <action
+            android:id="@+id/action_viewPagerContainerFragment_to_favoriteFilmFragment"
+            app:destination="@id/favoriteFilmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFilmFragment"
+        android:name="com.example.hw5.ui.filmlist.FavoriteFilmFragment"
+        android:label="FavoriteFilmFragment"/>
+</navigation>

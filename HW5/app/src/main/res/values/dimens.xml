@@ -1,0 +1,27 @@
+<resources>
+    <!-- Text Sizes -->
+    <dimen name="film_title_textsize">32sp</dimen>
+    <dimen name="film_score_textsize">18sp</dimen>
+    <dimen name="film_details_metascore_textsize">14sp</dimen>
+    <dimen name="film_details_scoreoutof10">16sp</dimen>
+    <dimen name="film_details_plot_summary">24sp</dimen>
+    <dimen name="film_details_total_vote">12sp</dimen>
+    <dimen name="no_fav_movies">20sp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="film_title_margin_top">20dp</dimen>
+    <dimen name="film_poster_tools_height">380dp</dimen>
+    <dimen name="film_poster_tools_width">250dp</dimen>
+    <dimen name="film_poster_radius">50dp</dimen>
+    <dimen name="genre_card_radius">100dp</dimen>
+    <dimen name="genre_card_padding_top_bottom">20dp</dimen>
+    <dimen name="genre_card_padding_start_end">9dp</dimen>
+    <dimen name="genre_card_stroke_width">1.5dp</dimen>
+    <dimen name="genre_card_margin_end">12dp</dimen>
+    <dimen name="favorite_film_card_height">70dp</dimen>
+    <dimen name="favorite_film_card_margin">15dp</dimen>
+    <dimen name="favorite_film_card_radius">50dp</dimen>
+    <dimen name="favorite_film_card_margin_top_bottom">20dp</dimen>
+    <dimen name="favorite_film_card_margin_start_end">30dp</dimen>
+    <dimen name="delete_favorite_margin">30dp</dimen>
+</resources>

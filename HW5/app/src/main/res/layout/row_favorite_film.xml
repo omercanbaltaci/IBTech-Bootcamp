@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="favoriteFilm"
+            type="com.example.hw5.ui.filmlist.model.FavoriteFilm" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/favorite_film_card_height"
+            android:layout_margin="@dimen/favorite_film_card_margin"
+            app:cardCornerRadius="@dimen/favorite_film_card_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/favoriteFilmTitle"
+                    style="@style/FavoriteFilmTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/favorite_film_card_margin_start_end"
+                    android:layout_marginTop="@dimen/favorite_film_card_margin_top_bottom"
+                    android:layout_marginEnd="@dimen/favorite_film_card_margin_start_end"
+                    android:layout_marginBottom="@dimen/favorite_film_card_margin_top_bottom"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeStepGranularity="2sp"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text="@{favoriteFilm.title}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/gotomovie"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Ford v Ferrari" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/gotomovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_goto"
+                    android:layout_marginRight="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/deleteButton"
+                    app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                    app:layout_constraintTop_toTopOf="@+id/deleteButton" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/delete_favorite_margin"
+                    android:src="@drawable/ic_delete"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

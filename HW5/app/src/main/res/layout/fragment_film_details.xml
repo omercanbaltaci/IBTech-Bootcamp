@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="detailsResponse"
+            type="com.example.hw5.ui.filmlist.model.FilmDetailsViewStateModel" />
+
+        <variable
+            name="favoritesResponse"
+            type="com.example.hw5.ui.filmlist.model.FavoriteFilmsViewStateModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.filmlist.FilmDetailsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="30dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/detailsPosterHolder"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-50dp"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/detailsPoster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                app:image="@{detailsResponse.posterPath}" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="-100dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="@id/detailsPosterHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/detailsPosterHolder">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/detailsScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_score2"
+                    app:layout_constraintBottom_toBottomOf="@id/detailsRate"
+                    app:layout_constraintEnd_toStartOf="@id/detailsRate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/detailsRate" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/detailsRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_rate_this"
+                    app:layout_constraintBottom_toBottomOf="@id/detailsMetaScore"
+                    app:layout_constraintEnd_toStartOf="@id/detailsMetaScore"
+                    app:layout_constraintStart_toEndOf="@id/detailsScore"
+                    app:layout_constraintTop_toTopOf="@id/detailsMetaScore" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/detailsMetaScore"
+                    android:layout_width="28dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/film_details_metascore_green"
+                    android:src="@drawable/ic_score"
+                    app:cardCornerRadius="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/detailsRate"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/FilmDetailsMetaScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="99" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/averageScore"
+                    style="@style/FilmDetailsSecondText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{String.valueOf(detailsResponse.averageScore)}"
+                    app:layout_constraintEnd_toEndOf="@+id/detailsScore"
+                    app:layout_constraintStart_toStartOf="@+id/detailsScore"
+                    app:layout_constraintTop_toBottomOf="@+id/detailsScore"
+                    tools:text="8.2/10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView2"
+                    style="@style/FilmDetailsSecondText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/rate_this"
+                    app:layout_constraintEnd_toEndOf="@+id/detailsRate"
+                    app:layout_constraintStart_toStartOf="@+id/detailsRate"
+                    app:layout_constraintTop_toBottomOf="@+id/detailsRate" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView3"
+                    style="@style/FilmDetailsSecondText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metascore"
+                    app:layout_constraintBottom_toBottomOf="@id/appCompatTextView2"
+                    app:layout_constraintEnd_toEndOf="@+id/detailsMetaScore"
+                    app:layout_constraintStart_toStartOf="@+id/detailsMetaScore"
+                    app:layout_constraintTop_toTopOf="@id/appCompatTextView2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/FilmDetailsThirdText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@{String.valueOf(detailsResponse.totalVoteCount)}"
+                    app:layout_constraintEnd_toEndOf="@+id/averageScore"
+                    app:layout_constraintStart_toStartOf="@+id/averageScore"
+                    app:layout_constraintTop_toBottomOf="@id/averageScore"
+                    tools:text="150.2012" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/filmDetailsTitle"
+            style="@style/FilmTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:maxLines="2"
+            android:text="@{detailsResponse.filmTitle}"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toStartOf="@+id/favIcon"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            tools:text="Ford v Ferrari" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/favIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@{favoritesResponse.favoritedIds.contains(detailsResponse.id) ? @drawable/ic_fav_selected : @drawable/ic_fav_unselected}"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/duration"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/filmDetailsTitle" />
+
+        <TextView
+            android:id="@+id/year"
+            style="@style/FilmDetailsYearAndDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{detailsResponse.year}"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/filmDetailsTitle"
+            tools:text="2019" />
+
+        <TextView
+            android:id="@+id/duration"
+            style="@style/FilmDetailsYearAndDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="8dp"
+            android:text="@{detailsResponse.duration}"
+            app:layout_constraintStart_toEndOf="@+id/year"
+            app:layout_constraintTop_toBottomOf="@+id/filmDetailsTitle"
+            tools:text="120" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/genreRV"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/duration" />
+
+        <TextView
+            android:id="@+id/plotSummaryTitle"
+            style="@style/PlotSummaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/plot_summary"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/genreRV" />
+
+        <TextView
+            android:id="@+id/plotSummary"
+            style="@style/PlotSummary"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:maxLines="@{Integer.MAX_VALUE}"
+            android:scrollbars="vertical"
+            android:text="@{detailsResponse.filmOverview}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintStart_toEndOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/plotSummaryTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

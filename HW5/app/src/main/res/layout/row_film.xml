@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="film"
+            type="com.example.hw5.ui.filmlist.model.Film" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/filmPosterHolder"
+            android:layout_width="175dp"
+            android:layout_height="250dp"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="@dimen/film_poster_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/filmPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image="@{film.poster_path}" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/filmTitle"
+            style="@style/FilmTitle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/film_title_margin_top"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@{film.title}"
+            app:layout_constraintEnd_toEndOf="@+id/filmPosterHolder"
+            app:layout_constraintStart_toStartOf="@+id/filmPosterHolder"
+            app:layout_constraintTop_toBottomOf="@+id/filmPosterHolder"
+            tools:text="Ford v Ferrari" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/filmScoreIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_score"
+            app:layout_constraintBottom_toBottomOf="@id/filmScore"
+            app:layout_constraintEnd_toStartOf="@id/filmScore"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/filmScore" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/filmScore"
+            style="@style/FilmScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="25dp"
+            android:text="@{String.valueOf(film.vote_average)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/filmScoreIcon"
+            app:layout_constraintTop_toBottomOf="@+id/filmTitle"
+            tools:text="8.2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
