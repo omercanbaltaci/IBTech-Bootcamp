@@ -20,10 +20,6 @@ class PrefUtils(context: Context, name: String, mode: Int) {
         editor = preferences.edit()
     }
 
-    fun getByKey(key: String): String? {
-        return preferences.getString(key, null)
-    }
-
     fun save(key: String, value: String) {
         editor.putString(key, value).apply()
     }

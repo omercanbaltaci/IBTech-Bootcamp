@@ -60,7 +60,6 @@ class FilmListAdapter(var filmList: List<Film>) :
 
 class FilmViewHolder(private val binding: RowFilmBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
     fun populate(film: Film) {
         binding.film = film
         binding.executePendingBindings()
