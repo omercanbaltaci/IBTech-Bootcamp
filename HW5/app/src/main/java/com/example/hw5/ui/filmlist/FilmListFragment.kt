@@ -17,6 +17,7 @@ import com.example.hw5.ui.filmlist.model.Film
 import com.example.hw5.ui.filmlist.viewmodel.FilmListViewModel
 import com.example.hw5.util.ConnectionLiveData
 import com.example.hw5.util.changeSpanSize
+import com.example.hw5.util.showToast
 
 class FilmListFragment : BaseFragment<FilmListViewModel, FragmentFilmListBinding>() {
     private var list = mutableListOf<Film>()            // Container for the responses
@@ -51,6 +52,9 @@ class FilmListFragment : BaseFragment<FilmListViewModel, FragmentFilmListBinding
                             .setCancelable(true)
                             .setNegativeButton("OK", null)
                             .show()
+                    }
+                    else -> {
+                        showToast("bağlı")
                     }
                 }
             })
