@@ -54,7 +54,7 @@ class FilmListFragment : BaseFragment<FilmListViewModel, FragmentFilmListBinding
                             .show()
                     }
                     else -> {
-                        showToast("bağlı")
+                        //showToast("bağlı")
                     }
                 }
             })
