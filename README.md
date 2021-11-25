@@ -20,3 +20,20 @@
   <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164837.png" width="150" />
   <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164903.png" width="150" />
 </p>
+
+## Homework #4
+* A TODO app has been implemented using the API [here.](https://documenter.getpostman.com/view/8858534/SW7dX7JG)
+* User can register, login, logout, add, update or remove tasks. Pagination's done by fetching 5 tasks at a time.
+* Retrofit2 and OkHttp3 have been used extensively.
+* Demo video can be found [here.](https://youtu.be/jLeC-Q59WOg)
+* The API can be found [here.](https://documenter.getpostman.com/view/8858534/SW7dX7JG)
+* Designs can be found [here.](https://www.figma.com/file/GdzR0Y4gMtV9ERf5GNryJpLQ/Tasker?node-id=0%3A174)
+* Swipe Layout library can be found [here.](https://github.com/rambler-digital-solutions/swipe-layout-android)
+<p float="middle">
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW4/images/device-2021-11-25-170722.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW4/images/device-2021-11-25-170747.png" width="150" /> 
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW4/images/device-2021-11-25-170801.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW4/images/device-2021-11-25-171244.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW4/images/device-2021-11-25-171305.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW4/images/device-2021-11-25-171905.png" width="150" />
+</p>
