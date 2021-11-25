@@ -11,4 +11,12 @@
 </p>
 
 ## Homework #3
-*
+* Using the previous week's designs, features such as bottom navigation view and avatar selection option using RecyclerView have been added.
+* Demo video can be found [here.](https://youtu.be/Nit92-2-RU8)
+<p float="middle">
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164753.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164809.png" width="150" /> 
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164820.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164837.png" width="150" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW3/images/device-2021-11-25-164903.png" width="150" />
+</p>
