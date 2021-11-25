@@ -41,6 +41,12 @@
 ## Homework #5
 * A movie listing app has been implemented using the API [here.](https://developers.themoviedb.org/)
 * User can list most popular movies, see the details of a selected movie and add it as favorite.
-* Favorite movies have been stored in the device memory using SharedPreferences.
-* MVVM pattern and LiveData have been used extensively.
+* Favorite movies are stored in the device memory using SharedPreferences.
+* MVVM pattern, LiveData and Single Activity/Multiple Fragments architecture have been used extensively.
+* Demo video can be found [here.](https://youtu.be/Fv934kXGLys)
 * Designs can be found [here.](https://www.figma.com/file/gIQiV6vlr4prYJkLgTjlp3/movie-app-(1))
+<p float="middle">
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW5/images/device-2021-11-25-175315.png" width="200" />
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW5/images/device-2021-11-25-175343.png" width="200" /> 
+  <img src="https://github.com/omercanbaltaci/IBTech-Bootcamp/blob/main/HW5/images/device-2021-11-25-175358.png" width="200" />
+</p>
